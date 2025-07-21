@@ -1,6 +1,11 @@
-# Docker
+# Docker and Compose
 
------------------------
+## Table of Contents
+
+- [Docker](#docker)
+- [Docker Compose](#docker-compose)
+
+## Docker
 
 **Docker** is a software platform designed for developing, delivering, and running applications. 
 For virtualization, Docker uses a hypervisor based on the kernel of the host operating system (hereafter referred to as the OS).
@@ -98,3 +103,5 @@ Basic Docker **commands**:
 - `docker images` – lists all images.
 
 - `docker rmi <image id>` – removes an image (`-f` forces removal).
+
+## Docker Compose
