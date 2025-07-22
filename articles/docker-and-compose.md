@@ -32,7 +32,7 @@ Every layer is a read-only filesystem snapshot. Together, these layers form a un
 Docker’s layered architecture allows multiple images on the same host to share common layers, 
 avoiding duplication and saving disk space.
 
-![Docker Image Layers](https://github.com/davyddd/wiki/blob/main/media/docker/docker-image-layers.jpg)
+![Docker Image Layers](https://github.com/davyddd/wiki/blob/main/media/docker-and-compose/docker-image-layers.jpg)
 
 Figure 1 — Visual representation of layer sharing in Docker images.
 
@@ -40,7 +40,7 @@ A Docker **container** is a running instance of a Docker image, containing the a
 libraries, and configuration files. Containers are isolated from the host system and from each other, 
 yet they share the host OS kernel, which makes them more efficient than virtual machines.
 
-![Docker Image Layers](https://github.com/davyddd/wiki/blob/main/media/docker/difference-docker-image-and-container.png)
+![Docker Image Layers](https://github.com/davyddd/wiki/blob/main/media/docker-and-compose/difference-docker-image-and-container.png)
 
 Figure 2 — Difference Between Docker Image and Container.
 
@@ -105,3 +105,93 @@ Basic Docker **commands**:
 - `docker rmi <image id>` – removes an image (`-f` forces removal).
 
 ## Docker Compose
+
+**Docker Compose** is a tool for defining and running multi-container Docker applications (an orchestration system). 
+It uses a configuration file to manage orchestration settings, describing how each container should be launched 
+and how they interact with each other.
+
+Basic **tags* used in service configuration:
+
+- `image` – the name of a prebuilt image from a registry (such as Docker Hub).
+
+- `build` – the relative path to the directory containing the Dockerfile. 
+For a single service, you can specify either image or build, but not both.
+
+- `command` – the command that will be used to start the container. This overrides the CMD instruction from the Dockerfile.
+
+- `volumes` – mounts host directories into the container’s filesystem. Multiple containers can share access to the same directory. 
+This tag is used mainly in local development to enable hot reload. It is generally avoided in production environments, 
+as file access in mounted volumes is slower and may affect web application performance.
+
+- `ports` – maps host ports to container ports. The ports don’t have to match; for example, 
+you can expose port 80 in the container as port 8080 on the host.
+
+- `depends_on` – lists dependent containers. The service will wait for these containers to start before launching.
+
+- `environment` – defines environment variables to be set inside the container.
+
+**Example** `docker-compose.yml` for a Python application:
+
+```yaml
+x-server-template: &server-template
+    build:
+        context: ./
+        dockerfile: ./Dockerfile
+        args:
+            PYTHONBREAKPOINT: import ipdb;ipdb.set_trace
+    volumes:
+        - .:/app
+    depends_on:
+        - redis
+        - postgres
+    environment:
+        REDIS_URL=redis://redis/1?socket_connect_timeout=2
+        POSTGRES_URL=postgresql+psycopg://postgres_user:postgres_password@postgres:5432/postgres_db
+
+services:
+    server:
+        <<: *server-template
+        command: python manage.py runserver
+        ports:
+            - 8000:8000
+
+    worker:
+        <<: *server-template
+        command: python manage.py runworker --processes 2 --threads 20
+
+    redis:
+        image: redis/redis-stack:7.2.0-v13
+
+    postgres:
+        image: postgres:16.2-alpine
+        environment:
+            POSTGRES_DB: postgres_db
+            POSTGRES_USER: postgres_user
+            POSTGRES_PASSWORD: postgres_password
+```
+
+**Note**: Compose automatically creates a dedicated virtual network and runs a built-in DNS server that maps each service name 
+to its IP address within that network. This means you don’t need to know the exact IP address assigned to a service — 
+you can simply refer to it by the name defined in the Compose file. For example, a database service named `postgres` 
+will be accessible to other containers at the address `postgres`.
+
+Basic Compose **commands**:
+
+- `docker-compose build <service name>` – builds the image for a specific service. If no service is specified, all services are built.
+
+- `docker-compose up` – starts all services/containers. To build and start at once, use the `--build` flag.
+
+- `docker-compose run <service name>` – runs a specific service and allows you to override the container’s default startup command. 
+For example, `docker-compose run --rm --service-ports server bash`, where the `--rm` flag is used to remove the container after it exits, 
+helping keep the host system clean; the `--service-ports` flag is required to forward ports to the host, 
+since run does not do this by default — even if the `ports` section is defined in the config file.
+
+**Notes**:
+
+- By default, Compose looks for a configuration file named `docker-compose.yml` in the root directory.
+
+- To use a configuration file with a custom name, use the `-f` flag. 
+For example, `docker-compose -f docker-compose.develop.yml up`
+
+- To override specific settings without modifying the main file, you can use a `docker-compose.override.yml` file.
+This file is typically added to `.gitignore` and often contains personal credentials to private services (e.g., Postgres).
