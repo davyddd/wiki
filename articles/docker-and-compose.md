@@ -4,6 +4,7 @@
 
 - [Docker](#docker)
 - [Docker Compose](#docker-compose)
+- [Installation guide](#installation-guide)
 
 ## Docker
 
@@ -195,3 +196,38 @@ For example, `docker-compose -f docker-compose.develop.yml up`
 
 - To override specific settings without modifying the main file, you can use a `docker-compose.override.yml` file.
 This file is typically added to `.gitignore` and often contains personal credentials to private services (e.g., Postgres).
+
+## Installation guide
+
+### MacOS
+
+On macOS, Docker and Compose are bundled together as part of [Docker Desktop](https://docs.docker.com/desktop/setup/install/mac-install/).
+[OrbStack](https://orbstack.dev/) is available as an alternative to Docker Desktop. According to its developers, 
+it features a more optimized virtual machine and improved volume performance.
+
+### Linux
+
+On Linux, Docker and Compose need to be installed separately.
+Follow the official installation instructions for your distribution:
+- [Docker installation guide](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+- [Docker-compose installation guide](https://docs.docker.com/compose/install/)
+
+Running `docker` without `sudo`
+
+```bash
+sudo groupadd docker
+sudo gpasswd -a ${USER} docker
+newgrp docker
+sudo service docker restart
+```
+
+Verify that `docker` works without `sudo`:
+```bash
+docker run hello-world
+```
+
+Running `docker-compose` without `sudo`
+
+```bash
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
