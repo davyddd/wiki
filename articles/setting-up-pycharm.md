@@ -39,6 +39,48 @@ Based Keyboard **Shortcuts**:
 
 ## Configuring the Python Interpreter
 
+The **Python interpreter** is the environment that PyCharm relies on to analyze and execute code.
+Its configuration affects project navigation, access to dependency libraries (including their source code), 
+and the highlighting of syntax errors and type mismatches. Without proper interpreter setup, 
+development efficiency decreases and the likelihood of bugs increases.
+
+Next, the focus will be on configuring how PyCharm interacts with the development environment inside Docker containers.
+Therefore, if you’re not familiar with containerizing applications using Docker, 
+or if Docker and Compose are not installed on your host machine, it is recommended to read [this article](https://github.com/davyddd/wiki/blob/main/articles/docker-and-compose.md).
+
+On macOS, the first step is to enable Docker support in PyCharm:
+
+- Open PyCharm settings (`Ctrl + Alt + S` or `Command + ,`).
+
+- Navigate to `Build, Execution, Deployment` → `Docker`.
+
+- Docker is not listed in the opened window, click the `+` icon and configure it as shown in Figure 1.
+
+![Docker configuration](https://github.com/davyddd/wiki/blob/main/media/setting-up-pycharm/docker-configuration.png)
+
+Figure 1. Docker configuration in PyCharm settings.
+
+By default, PyCharm looks for all project dependencies in the local environment. However, in this case, 
+the dependencies are installed inside a Docker container. To let the IDE know where to find them, 
+you need to configure the interpreter by following these steps:
+
+- Open PyCharm settings.
+
+- Expand the `Project: <your project name>` section.
+
+- Go to the `Project Interpreter` tab.
+
+- In the top-right corner, click the `Add Interpreter` and choose `On Docker Compose…`.
+
+- In the window that opens, under the `Service` section, select your service defined in the `docker-compose.yml` file, as shown in Figure 2.
+
+**Note**: The `docker-compose.yml` file must be located in the root of the project. 
+Otherwise, PyCharm won’t be able to load the available services for selection.
+
+![Compose interpreter setup](https://github.com/davyddd/wiki/blob/main/media/setting-up-pycharm/compose-interpreter-setup.png)
+
+Figure 2. Compose interpreter setup.
+
 ## Setting up the Debugger
 
 ## Integrating with Git
