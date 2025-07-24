@@ -202,6 +202,7 @@ This file is typically added to `.gitignore` and often contains personal credent
 ### MacOS
 
 On macOS, Docker and Compose are bundled together as part of [Docker Desktop](https://docs.docker.com/desktop/setup/install/mac-install/).
+
 [OrbStack](https://orbstack.dev/) is available as an alternative to Docker Desktop. According to its developers, 
 it features a more optimized virtual machine and improved volume performance.
 
