@@ -58,7 +58,7 @@ On macOS, the first step is to enable Docker support in PyCharm:
 
 ![Docker configuration](https://github.com/davyddd/wiki/blob/main/media/setting-up-pycharm/docker-configuration.png)
 
-Figure 1. Docker configuration in PyCharm settings.
+Figure 1 — Docker configuration in PyCharm settings.
 
 By default, PyCharm looks for all project dependencies in the local environment. However, in this case, 
 the dependencies are installed inside a Docker container. To let the IDE know where to find them, 
@@ -77,9 +77,9 @@ you need to configure the interpreter by following these steps:
 **Note**: The `docker-compose.yml` file must be located in the root of the project. 
 Otherwise, PyCharm won’t be able to load the available services for selection.
 
-![Compose interpreter setup](https://github.com/davyddd/wiki/blob/main/media/setting-up-pycharm/compose-interpreter-setup.png)
+<img src="https://github.com/davyddd/wiki/blob/main/media/setting-up-pycharm/compose-interpreter-setup.png" width="400" title="Compose interpreter setup">
 
-Figure 2. Compose interpreter setup.
+Figure 2 — Compose interpreter setup.
 
 ## Setting up the Debugger
 
