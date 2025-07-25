@@ -119,7 +119,7 @@ by default, it usually says `Current File`. Click it and select `Edit Configurat
 
 - In the window that opens, click the `+` icon, choose `Django server`, and configure the settings as shown in Figure 4.
 
-<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/pycharm-django-debug-config.png" width="900" alt="Django server configuration in PyCharm" title="Django server configuration in PyCharm">
+<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/pycharm-django-server-config.png" width="900" alt="Django server configuration in PyCharm" title="Django server configuration in PyCharm">
 
 Figure 4 — Django server configuration in PyCharm.
 
