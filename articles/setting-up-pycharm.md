@@ -92,7 +92,7 @@ To resolve, need to mark the application directory as the source root:
 
 The first step is to enable Django support in PyCharm. This allows you to use the built-in `Django server` for running 
 and debugging your application, and unlocks many other features as well (learn more <a href="https://www.jetbrains.com/help/pycharm/django-support7.html" target="_blank">here</a>).
-To enable it, follow these steps (see figure 3 to locate the Django settings section):
+To enable it, follow these steps (see Figure 3 to locate the Django settings section):
 
 - Open PyCharm settings.
 
@@ -111,6 +111,17 @@ To enable it, follow these steps (see figure 3 to locate the Django settings sec
 <img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/pycharm-django-settings.png" width="900" alt="Django support settings in PyCharm" title="Django support settings in PyCharm">
 
 Figure 3 — Django support settings in PyCharm.
+
+To configure the debugger in PyCharm, follow these steps:
+
+- In the top-right corner of the IDE, locate the `Play` and `Bug` icons. To the left of them, you’ll see a dropdown — 
+by default, it usually says `Current File`. Click it and select `Edit Configurations…`.
+
+- In the window that opens, click the `+` icon, choose `Django server`, and configure the settings as shown in Figure 4.
+
+<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/pycharm-django-debug-config.png" width="900" alt="Django server configuration in PyCharm" title="Django server configuration in PyCharm">
+
+Figure 4 — Django server configuration in PyCharm.
 
 ### FastAPI
 
