@@ -33,7 +33,7 @@ Every layer is a read-only filesystem snapshot. Together, these layers form a un
 Docker’s layered architecture allows multiple images on the same host to share common layers, 
 avoiding duplication and saving disk space.
 
-![Docker Image Layers](https://github.com/davyddd/wiki/blob/main/media/docker-and-compose/docker-image-layers.jpg)
+<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/docker-and-compose/docker-image-layers.jpg" width="650" title="Docker image layers">
 
 Figure 1 — Visual representation of layer sharing in Docker images.
 
@@ -41,9 +41,9 @@ A Docker **container** is a running instance of a Docker image, containing the a
 libraries, and configuration files. Containers are isolated from the host system and from each other, 
 yet they share the host OS kernel, which makes them more efficient than virtual machines.
 
-![Docker Image Layers](https://github.com/davyddd/wiki/blob/main/media/docker-and-compose/difference-docker-image-and-container.png)
+<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/docker-and-compose/difference-docker-image-and-container.png" width="500" title="Difference Docker image and container">
 
-Figure 2 — Difference Between Docker Image and Container.
+Figure 2 — Difference between Docker image and container.
 
 The **rules** of writing a Dockerfile:
 
