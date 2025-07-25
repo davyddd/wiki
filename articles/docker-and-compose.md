@@ -19,7 +19,7 @@ Advantages of using Docker:
 
 - _Workspace isolation_. Prevents conflicts between software versions.
 
-- _Maintains host OS cleanliness_. Some applications require installing system packages that are later hard to remove. 
+- _Keeps the host OS clean_. Some applications require installing system packages that are later hard to remove. 
 With Docker, all dependencies are installed inside an image, which can be removed with a single command.
 
 - _Simple build and run process_. Running the application comes down to a single command 
