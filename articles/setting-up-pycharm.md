@@ -56,7 +56,7 @@ On macOS, the first step is to enable Docker support in PyCharm:
 
 - Docker is not listed in the opened window, click the `+` icon and configure it as shown in Figure 1.
 
-<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/docker-configuration.png" width="900" title="Docker configuration">
+<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/docker-configuration.png" width="900" alt="Docker configuration in PyCharm settings" title="Docker configuration in PyCharm settings">
 
 Figure 1 — Docker configuration in PyCharm settings.
 
@@ -77,13 +77,40 @@ you need to configure the interpreter by following these steps:
 **Note**: The `docker-compose.yml` file must be located in the root of the project. 
 Otherwise, PyCharm won’t be able to load the available services for selection.
 
-<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/compose-interpreter-setup.png" width="400" title="Compose interpreter setup">
+<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/compose-interpreter-setup.png" width="400" alt="Compose interpreter setup" title="Compose interpreter setup">
 
 Figure 2 — Compose interpreter setup.
+
+**Note**: Even after configuring the Python interpreter, PyCharm may not recognize local imports.
+To resolve, need to mark the application directory as the source root:
+- Right-click the directory in the project tree.
+- Go to `Mark Directory as` → `Sources Root`.
 
 ## Setting up the Debugger
 
 ### Django
+
+The first step is to enable Django support in PyCharm. This allows you to use the built-in `Django server` for running 
+and debugging your application, and unlocks many other features as well (learn more [here](https://www.jetbrains.com/help/pycharm/django-support7.html)).
+To enable it, follow these steps (see figure 3 to locate the Django settings section):
+
+- Open PyCharm settings.
+
+- Expand the `Languages & Frameworks section`.
+
+- Navigate to the `Django` tab.
+
+- Check the `Enable Django Support` box, then fill in the following fields:
+
+  - `Django project root` – the directory that typically contains the `manage.py` file;
+
+  - `Settings` – the path to the `settings.py` file;
+
+  - `Manage script` – the path to the `manage.py` file itself.
+
+<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/pycharm-django-settings.png" width="900" alt="Django support settings in PyCharm" title="Django support settings in PyCharm">
+
+Figure 3 — Django support settings in PyCharm.
 
 ### FastAPI
 
