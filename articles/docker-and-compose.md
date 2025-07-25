@@ -201,17 +201,20 @@ This file is typically added to `.gitignore` and often contains personal credent
 
 ### MacOS
 
-On macOS, Docker and Compose are bundled together as part of [Docker Desktop](https://docs.docker.com/desktop/setup/install/mac-install/).
+On macOS, Docker and Compose are bundled together as part of <a href="https://docs.docker.com/desktop/setup/install/mac-install/" target="_blank">Docker Desktop</a>.
 
-[OrbStack](https://orbstack.dev/) is available as an alternative to Docker Desktop. According to its developers, 
+<a href="https://orbstack.dev/" target="_blank">OrbStack</a> is available as an alternative to Docker Desktop. According to its developers, 
 it features a more optimized virtual machine and improved volume performance.
 
 ### Linux
 
 On Linux, Docker and Compose need to be installed separately.
 Follow the official installation instructions for your distribution:
-- [Docker installation guide](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-- [Docker-compose installation guide](https://docs.docker.com/compose/install/)
+
+- <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank">Docker installation guide</a>
+
+- <a href="https://docs.docker.com/compose/install/" target="_blank">Docker-compose installation guide</a>
+
 
 Running `docker` without `sudo`
 

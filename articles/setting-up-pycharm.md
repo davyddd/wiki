@@ -11,9 +11,9 @@
 
 **PyCharm** is an integrated development environment (IDE) for the Python programming language.
 
-Before you start working, you need to install the IDE. Download PyCharm from [here](https://www.jetbrains.com/pycharm/) — 
+Before you start working, you need to install the IDE. Download PyCharm from <a href="https://www.jetbrains.com/pycharm/" target="_blank">here</a> — 
 the Professional version includes a 30-day free trial — and install it on your system. To start using PyCharm, 
-you’ll need to create a [JetBrains account](https://account.jetbrains.com/signup). Then open the IDE, 
+you’ll need to create a <a href="https://account.jetbrains.com/signup" target="_blank">JetBrains account</a>. Then open the IDE, 
 sign in with your credentials, and open your project.
 
 **Note**: The free version of PyCharm has limited functionality — for example, it doesn’t support Docker- or 
@@ -46,7 +46,7 @@ development efficiency decreases and the likelihood of bugs increases.
 
 Next, the focus will be on configuring how PyCharm interacts with the development environment inside Docker containers.
 Therefore, if you’re not familiar with containerizing applications using Docker, 
-or if Docker and Compose are not installed on your host machine, it is recommended to read [this article](https://github.com/davyddd/wiki/blob/main/articles/docker-and-compose.md).
+or if Docker and Compose are not installed on your host machine, it is recommended to read <a href="https://github.com/davyddd/wiki/blob/main/articles/docker-and-compose.md" target="_blank">this article</a>.
 
 On macOS, the first step is to enable Docker support in PyCharm:
 
@@ -91,7 +91,7 @@ To resolve, need to mark the application directory as the source root:
 ### Django
 
 The first step is to enable Django support in PyCharm. This allows you to use the built-in `Django server` for running 
-and debugging your application, and unlocks many other features as well (learn more [here](https://www.jetbrains.com/help/pycharm/django-support7.html)).
+and debugging your application, and unlocks many other features as well (learn more <a href="https://www.jetbrains.com/help/pycharm/django-support7.html" target="_blank">here</a>).
 To enable it, follow these steps (see figure 3 to locate the Django settings section):
 
 - Open PyCharm settings.
