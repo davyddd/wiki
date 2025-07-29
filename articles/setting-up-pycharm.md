@@ -17,7 +17,7 @@ you’ll need to create a <a href="https://account.jetbrains.com/signup" target=
 sign in with your credentials, and open your project.
 
 **Note**: The free version of PyCharm has limited functionality — for example, it doesn’t support Docker- or 
-Compose-based Python interpreters — which makes it unsuitable for commercial development.
+Compose-based Python Interpreters — which makes it unsuitable for commercial development.
 
 Based Keyboard **Shortcuts**:
 
@@ -39,7 +39,7 @@ Based Keyboard **Shortcuts**:
 
 ## Configuring the Python Interpreter
 
-The **Python interpreter** is the environment that PyCharm relies on to analyze and execute code.
+The **Python Interpreter** is the environment that PyCharm relies on to analyze and execute code.
 Its configuration affects project navigation, access to dependency libraries (including their source code), 
 and the highlighting of syntax errors and type mismatches. Without proper interpreter setup, 
 development efficiency decreases and the likelihood of bugs increases.
@@ -81,7 +81,7 @@ Otherwise, PyCharm won’t be able to load the available services for selection.
 
 Figure 2 — Compose interpreter setup.
 
-**Note**: Even after configuring the Python interpreter, PyCharm may not recognize local imports.
+**Note**: Even after configuring the Python Interpreter, PyCharm may not recognize local imports.
 To resolve, need to mark the application directory as the source root:
 - Right-click the directory in the project tree.
 - Go to `Mark Directory as` → `Sources Root`.
@@ -119,7 +119,7 @@ by default, it usually says `Current File`. Click it and select `Edit Configurat
 
 - In the window that opens, click the `+` icon, choose `Django server`, and configure the settings as shown in Figure 4.
 
-**Note**: In the `Django server` configuration, it’s enough to specify the `Python interpreter` created in the previous step 
+**Note**: In the `Django server` configuration, it’s enough to specify the `Python Interpreter` created in the previous step 
 and set the `host` and `port`. All other settings can be left at their default values.
 
 <img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/pycharm-django-server-config.png" width="900" alt="Django server configuration in PyCharm" title="Django server configuration in PyCharm">
@@ -128,5 +128,72 @@ Figure 4 — Django server configuration in PyCharm.
 
 ### FastAPI
 
+To configure the debugger in PyCharm, follow these steps:
+
+- In the top-right corner of the IDE, locate the `Play` and `Bug` icons. To the left of them, you’ll see a dropdown — 
+by default, it usually says `Current File`. Click it and select `Edit Configurations…`.
+
+- In the window that opens, click the `+` icon, choose `FastAPI`;
+
+- Fill in the following fields (see Figure 5 as a reference):
+
+  - `Application file` – the path to the file containing the application, typically named `main.py`;
+
+  - `Application name` – the name of the application, typically `app`;
+
+  - `Uvicorn options` – optional parameters for the Uvicorn web server;
+
+  - `Python Interpreter` - the interpreter configured in the previous step.
+
+<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/pycharm-fastapi-native-config.png" width="900" alt="FastAPI configuration using the built-in template in PyCharm" title="FastAPI configuration using the built-in template in PyCharm">
+
+Figure 5 — FastAPI configuration using the built-in template in PyCharm.
+
+In case the application needs to be launched based on environment variables, 
+you can use <a href="https://github.com/fastapi/typer" target="_blank">Typer</a> to define a custom CLI 
+and configure the startup behavior in detail (see the code snippet down).
+
+```python
+# manage.py
+
+import typer
+import uvicorn
+
+from config.logging.config import LOG_CONFIG
+from config.settings import settings
+
+cli = typer.Typer()
+
+
+@cli.command()
+def runserver(host: str = '0.0.0.0', port: int = 8000) -> None:
+    config = {'app': 'config.main:app', 'host': host, 'port': port, 'reload': settings.DEBUG, 'proxy_headers': True}
+    if not settings.DEBUG:
+        config['log_config'] = LOG_CONFIG
+
+    uvicorn.run(**config)
+
+
+if __name__ == '__main__':
+    cli()
+```
+
+In this case, to configure the debugger in PyCharm, follow these steps:
+
+- Open the `Run/Debug Configurations` window;
+
+- Click the `+` icon and choose `Python`;
+
+- Fill in the following fields (see Figure 6 for an example):
+
+  - `Python Interpreter` – select the interpreter configured in the previous step;
+
+  - `Script` – path to the `manage.py` file, usually located at the root of the project;
+
+  - `Parameters` – specify the command to run, in this case: `runserver`.
+
+<img src="https://raw.githubusercontent.com/davyddd/wiki/refs/heads/main/media/setting-up-pycharm/pycharm-fastapi-script-config.png" width="900" alt="FastAPI configuration using a CLI script in PyCharm" title="FastAPI configuration using a CLI script in PyCharm">
+
+Figure 6 — FastAPI configuration using a CLI script in PyCharm.
 
 ## Integrating with Git
