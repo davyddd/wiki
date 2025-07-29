@@ -197,3 +197,24 @@ In this case, to configure the debugger in PyCharm, follow these steps:
 Figure 6 — FastAPI configuration using a CLI script in PyCharm.
 
 ## Integrating with Git
+
+This IDE provides a convenient interface for interacting with version control systems, featuring the following functionality:
+
+- In the top-left corner, the `Git Branch` section allows you to switch, create, pull, push, and merge branches.
+
+- In the bottom-left corner of the screen, the `Local Changes` tab in the `Git` panel displays all local file modifications. 
+Right-clicking on a file or group of files gives you options to:
+
+  - view changes (`Show Diff`);
+
+  - revert files to their original state (`Rollback…`);
+
+  - commit changes (`Commit Files…`).
+
+If the `Local Changes` tab is not visible in the `Git` section, follow these steps:
+
+- Install and enable the `Modal Commit Interface` plugin in `Settings` (`Ctrl + Alt + S` or `Command + ,`) > `Plugins`.
+
+- Enable the option: `Settings` > `Advanced Settings` > `Version Control` > `Use modal commit interface for Git and Mercurial`.
+
+- Disable the option: `Settings` > `Version Control` > `Git` > `Enable staging area`.
