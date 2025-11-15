@@ -6,5 +6,5 @@ and keeping engineering practices consistent.
 
 ## Table of Contents
 
-- [Setting up PyCharm](./articles/setting-up-pycharm.md)
 - [Docker and Compose](./articles/docker-and-compose.md)
+- [Setting up PyCharm](./articles/setting-up-pycharm.md)
